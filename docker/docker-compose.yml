@@ -1,0 +1,28 @@
+services:
+  supermarket:
+    container_name: smt-server
+    image: ghcr.io/karelkryda/smt-dedicated-server:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - SAVE_FILE=StoreFile0.es3
+      - LAYOUT=0
+      - GAME_MODE=1
+      - AUTO_END_DAY=true
+      - USE_AUTOSAVE=true
+      - GRANT_PERMISSIONS=true
+      - AUTOSAVE_MINUTES=5
+      - TARGET_FPS=60
+      - GAME_LOCALE=cs_CZ.UTF-8
+    volumes:
+      - smt-steamcmd:/opt/steamcmd
+      - smt-wineprefix:/home/server/.wine
+      - smt-game:/home/server/game
+      - ./saves:/home/server/data
+      - ./plugins:/home/server/plugins
+    stop_grace_period: 30s
+
+volumes:
+  smt-steamcmd:
+  smt-wineprefix:
+  smt-game:

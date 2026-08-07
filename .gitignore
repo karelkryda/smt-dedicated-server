@@ -1,0 +1,18 @@
+# Build output
+plugin/bin/
+plugin/obj/
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+
+# Runtime data
+docker/saves/
+docker/plugins/
+docker/.env
+
+# OS
+.DS_Store
+Thumbs.db
