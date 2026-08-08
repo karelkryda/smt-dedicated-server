@@ -100,13 +100,14 @@ Download the latest `AutoHost.dll` from [Releases](https://github.com/karelkryda
 
 ## Known Limitations
 
-- No graceful save-on-shutdown (relies on periodic autosave)
 - Host player spawns but is uncontrolled (stands idle in the shop)
 - Requires the full graphics pipeline (cannot use Unity's `-nographics`)
 
 ## How It Works
 
 The Docker container runs the game inside Wine with a virtual display (Xvfb). A BepInEx plugin bypasses the game menu and triggers the game's own initialization flow - loading saves, spawning employees, creating a Steam lobby. The server then auto-continues days and autosaves periodically.
+
+On `docker stop`, the server saves the game before shutting down.
 
 ## License
 
